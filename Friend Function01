@@ -1,0 +1,103 @@
+#include <iostream>
+
+using namespace std;
+
+class Truck;
+
+class Car {
+private:
+    string name;
+    double speed;
+
+public:
+    Car() {
+        speed = 0;
+    }
+
+    Car(string n, double s) {
+        name = n;
+        speed = s;
+    }
+
+    ~Car() {
+        //cout << "Car class is getting destructed..." << endl;
+    }
+
+    string getName() {
+        return name;
+    }
+
+    double getSpeed() {
+        return speed;
+    }
+
+    void setName(string n) {
+        name = n;
+    }
+
+    void setSpeed(double s) {
+        speed = s;
+    }
+
+    friend void race(Car c, Truck t);
+};
+
+class Truck {
+private:
+    string name;
+    double speed;
+
+public:
+    Truck() {
+        speed = 0;
+    }
+
+    Truck(string n, double s) {
+        name = n;
+        speed = s;
+    }
+
+    ~Truck() {
+        //cout << "Truck class is getting destructed..." << endl;
+    }
+
+    string getName() {
+        return name;
+    }
+
+    double getSpeed() {
+        return speed;
+    }
+
+    void setName(string n) {
+        name = n;
+    }
+
+    void setSpeed(double s) {
+        speed = s;
+    }
+
+    friend void race(Car c, Truck t);
+};
+
+void race(Car c, Truck t) {
+    if (c.speed > t.speed) {
+        cout << "Car beats Truck to win the race" << endl;
+    }
+    else if (c.speed < t.speed) {
+        cout << "Truck beats Car to win the race" << endl;
+    }
+    else {
+        cout << "The race drawn" << endl;
+    }
+}
+
+int main() {
+    Car c("Toyota", 80);
+
+    Truck t("Eicher", 60);
+
+    race(c, t);
+
+    return 0;
+}
